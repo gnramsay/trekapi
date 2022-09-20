@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "trekapi"
+version = "0.1.0"
+description = "API to serve Star Trek episode data"
+authors = ["Grant Ramsay <grant@gnramsay.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = "^0.85.0"
+uvicorn = {extras = ["standard"], version = "^0.18.3"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
