@@ -1,0 +1,3 @@
+[submodule "trekpedia"]
+	path = trekpedia
+	url = https://github.com/gnramsay/trekpedia.git
