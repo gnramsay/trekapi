@@ -7,4 +7,4 @@ Written using [FastAPI](https://fastapi.tiangolo.com)
 
 ## Work In Progress
 
-This is currently a stub and contains to usable functionality.
+This is currently a stub and contains no usable functionality.
