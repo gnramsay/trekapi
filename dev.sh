@@ -1,1 +1,1 @@
-uvicorn trekapi_app.main:api --reload
+uvicorn main:api --reload
