@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+from api import trek_api
 from views import home
 
 api = FastAPI(
@@ -12,3 +13,4 @@ api = FastAPI(
 
 api.mount("/static", StaticFiles(directory="static"), name="static")
 api.include_router(home.router)
+api.include_router(trek_api.router)

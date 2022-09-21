@@ -55,5 +55,7 @@
   "explorer.experimental.fileNesting.expand": false,
   "explorer.experimental.fileNesting.patterns": {
     "requirements.txt": ".coveragerc, .env.example, tox.ini, .python-version, pytest.ini, .gitignore"
-  }
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "python.linting.mypyEnabled": true
 }
