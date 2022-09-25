@@ -24,7 +24,6 @@ def get_one_series(series_number: str, db: Session = Depends(get_db)):
         .filter(models.Series.series_number == series_number)
         .first()
     )
-    print(series_data)
     if not series_data:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -40,13 +39,27 @@ def get_all_series(db: Session = Depends(get_db)):
     return series
 
 
-@router.post("/")
+@router.post("/", response_model=schemas.Series)
 def add_new_series(request: schemas.Series, db: Session = Depends(get_db)):
     """Add a new Series to the database.
 
     Note this is just the Series metadata, not season or episode data.
     """
-    print(request)
+
+    # make sure this series number is not alrady used.
+    check_series = (
+        db.query(models.Series)
+        .filter(models.Series.series_number == request.series_number)
+        .first()
+    )
+
+    if check_series:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Series {request.series_number} already exists.",
+        )
+
+    # we're good so create the new one.
     new_series = models.Series(
         series_number=request.series_number,
         name=request.name,
