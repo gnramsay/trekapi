@@ -31,6 +31,7 @@ class Season(Base):
 
     __tablename__ = "season"
     id = Column(Integer, primary_key=True, index=True)
+    season_number = Column(Integer)
     total_episodes = Column(Integer)
     season_start = Column(String)
     season_end = Column(String)
