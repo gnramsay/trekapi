@@ -2,8 +2,8 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from api import trek_api
-from views import home
+from trekapi.api import trek_api
+from trekapi.views import home
 
 api = FastAPI(
     title="TrekAPI",
