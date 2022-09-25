@@ -1,18 +1,31 @@
 """Define Schemas used in the API."""
-from pydantic import BaseModel
+
+from pydantic import BaseModel, Field, HttpUrl
 
 
 class Series(BaseModel):
     """Define the Series Schema."""
 
-    series_number: int
-    name: str
-    url: str
-    season_count: int
-    episode_count: int
-    episodes_url: str
-    dates: str
-    logo: str
+    series_number: int = Field(
+        description="Number of this Series, starting at 1 for TOS."
+    )
+    name: str = Field(description="Standard name of this Series.")
+    url: HttpUrl = Field(
+        description="URL for the main Wikipedia page of this Series."
+    )
+    season_count: int = Field(
+        description="Number of full seasons in this Series."
+    )
+    episode_count: int = Field(
+        description="Total Number of episodes in this Series (all Seasons)."
+    )
+    episodes_url: HttpUrl = Field(
+        description="URL for the Episode data on Wikipedia of this Series."
+    )
+    dates: str = Field(
+        description="Start and end dates of this Series, Text format."
+    )
+    logo: HttpUrl = Field(description="URL for the Logo of this Series.")
 
     class Config:
         """Set this as ORM compatible and add example data."""
@@ -45,6 +58,10 @@ class Series(BaseModel):
 class Season(BaseModel):
     """Define the Season schema."""
 
+    season_number: int = Field(
+        title="Season Number",
+        description="Number of Season within it's parent Season.",
+    )
     total_episodes: int
     season_start: str
     season_end: str
