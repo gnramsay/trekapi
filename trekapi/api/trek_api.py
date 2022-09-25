@@ -1,10 +1,7 @@
 """All Routing for the API routes."""
-import fastapi
+from fastapi import APIRouter
 
-router = fastapi.APIRouter()
+from trekapi.api import series
 
-
-@router.get("/api/trek/{series}")
-def trek(series: str):
-    """Placeholder for the api routes."""
-    return {"message": "API Inititialized."}
+router = APIRouter(tags=["Trekpedia API"], prefix="/api/v1")
+router.include_router(series.router)
