@@ -45,7 +45,6 @@ def add_new_series(request: schemas.Series, db: Session = Depends(get_db)):
 
     Note this is just the Series metadata, not season or episode data.
     """
-
     # make sure this series number is not alrady used.
     check_series = (
         db.query(models.Series)

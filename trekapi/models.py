@@ -22,3 +22,18 @@ class Series(Base):
     episodes_url = Column(String)
     dates = Column(String)
     logo = Column(String)
+
+    seasons = relationship("Season", back_populates="series")
+
+
+class Season(Base):
+    """Define the Season Model."""
+
+    __tablename__ = "season"
+    id = Column(Integer, primary_key=True, index=True)
+    total_episodes = Column(Integer)
+    season_start = Column(Integer)
+    season_end = Column(Integer)
+
+    series_id = Column(Integer, ForeignKey("series.id"))
+    series = relationship("Series", back_populates="seasons")
