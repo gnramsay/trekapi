@@ -15,7 +15,7 @@ class Series(BaseModel):
     logo: str
 
     class Config:
-        """Set this as ORM compatible."""
+        """Set this as ORM compatible and add example data."""
 
         orm_mode = True
         schema_extra = {
@@ -38,5 +38,25 @@ class Series(BaseModel):
                     "/e/e7/Star_Trek_DS9_logo.svg/"
                     "220px-Star_Trek_DS9_logo.svg.png"
                 ),
+            }
+        }
+
+
+class Season(BaseModel):
+    """Define the Season schema."""
+
+    total_episodes: int
+    season_start: str
+    season_end: str
+
+    class Config:
+        """Set this as ORM compatible and add example data."""
+
+        orm_mode = True
+        schema_extra = {
+            "example": {
+                "total_episodes": 20,
+                "season_start": "January 3, 1993",
+                "season_end": "June 20, 1993",
             }
         }

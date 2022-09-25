@@ -32,8 +32,8 @@ class Season(Base):
     __tablename__ = "season"
     id = Column(Integer, primary_key=True, index=True)
     total_episodes = Column(Integer)
-    season_start = Column(Integer)
-    season_end = Column(Integer)
+    season_start = Column(String)
+    season_end = Column(String)
 
     series_id = Column(Integer, ForeignKey("series.id"))
     series = relationship("Series", back_populates="seasons")
