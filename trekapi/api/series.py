@@ -56,7 +56,10 @@ def add_new_series(request: schemas.Series, db: Session = Depends(get_db)):
     if check_series:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Series {request.series_number} already exists.",
+            detail=(
+                f"Series {request.series_number} "
+                f"already exists ({request.name})."
+            ),
         )
 
     # we're good so create the new one.

@@ -1,4 +1,5 @@
 """Define the database Models."""
+
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
@@ -13,7 +14,7 @@ class Series(Base):
 
     __tablename__ = "series"
     id = Column(Integer, primary_key=True, index=True)
-    series_number = Column(Integer)
+    series_number = Column(Integer, unique=True)
     name = Column(String)
     url = Column(String)
     season_count = Column(Integer)
