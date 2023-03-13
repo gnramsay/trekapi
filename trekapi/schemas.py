@@ -62,7 +62,7 @@ class Season(BaseModel):
         title="Season Number",
         description="Number of Season within it's parent Season.",
     )
-    total_episodes: int
+    total_episodes: int = Field(description="Total epsiodes for this Season")
     season_start: str
     season_end: str
 
